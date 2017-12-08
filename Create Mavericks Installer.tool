@@ -79,7 +79,7 @@ hdiutil \
 # Mount BaseSystem.dmg so we can access files inside.
 # This fails if the image is already mounted somewhere else.
 hdiutil \
-   attach "$installMnt"/BaseSystem.dmg \
+   attach "$inputApp"/Contents/SharedSupport/BaseSystem.dmg \
    -mountpoint "$baseMnt" \
    -nobrowse \
    -noverify \
