@@ -78,12 +78,22 @@ hdiutil \
 
 # Mount BaseSystem.dmg so we can access files inside.
 # This fails if the image is already mounted somewhere else.
-hdiutil \
-   attach "$installMnt"/BaseSystem.dmg \
-   -mountpoint "$baseMnt" \
-   -nobrowse \
-   -noverify \
-   -readonly
+if [ -f "$inputApp"/Contents/SharedSupport/BaseSystem.dmg ];
+then
+   hdiutil \
+      attach "$inputApp"/Contents/SharedSupport/BaseSystem.dmg \
+      -mountpoint "$baseMnt" \
+      -nobrowse \
+      -noverify \
+      -readonly
+else
+   hdiutil \
+      attach "$installMnt"/BaseSystem.dmg \
+      -mountpoint "$baseMnt" \
+      -nobrowse \
+      -noverify \
+      -readonly
+fi
 
 #
 # Determine the size of the disk image.
