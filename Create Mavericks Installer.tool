@@ -232,7 +232,7 @@ hardlink() {
    # "ln" fails with "Operation not permitted" (even for the super user) if the
    # source's uchg (user immutable) flag is set.
 
-   local flags=`ls -lO@ "$outputMnt"/"$1" | awk '{ print $5 }'`
+   local flags=`ls -lnO@ "$outputMnt"/"$1" | awk '{ print $5 }'`
 
    if echo "$flags" | grep -q uchg; then
       # The uchg flag is set. Temporarily clear it to allow "ln" to succeed.
